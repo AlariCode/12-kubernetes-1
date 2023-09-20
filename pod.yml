@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: short-app
+  labels:
+    components: frontend
+spec:
+  containers:
+    - name: short-app
+      image: antonlarichev/short-app
+      ports:
+        - containerPort: 80
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
