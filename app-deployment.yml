@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: short-app-deployment
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       components: frontend
@@ -20,4 +20,4 @@ spec:
           resources:
             limits:
               memory: "128Mi"
-              cpu: "500m"
+              cpu: "100m"
