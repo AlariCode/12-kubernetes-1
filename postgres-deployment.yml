@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      components: postgres
+  template:
+    metadata:
+      labels:
+        components: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:16.0
+          ports:
+            - containerPort: 5432
+          resources:
+            limits:
+              memory: "500Mi"
+              cpu: "300m"
