@@ -17,6 +17,13 @@ spec:
           image: postgres:16.0
           ports:
             - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: demo
+            - name: POSTGRES_USER
+              value: demo
+            - name: POSTGRES_PASSWORD
+              value: demo
           resources:
             limits:
               memory: "500Mi"
