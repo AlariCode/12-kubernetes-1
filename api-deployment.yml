@@ -21,3 +21,13 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "100m"
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: short-api-secret
+                  key: DATABASE_URL
+
+# DATABASE_URL
+# postgresql://user:password@url:5432/db
+# postgresql://demo:demo@postgres-clusterip:5432/demo
