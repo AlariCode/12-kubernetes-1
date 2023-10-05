@@ -19,8 +19,8 @@ spec:
             - containerPort: 3000
           resources:
             limits:
-              memory: "128Mi"
-              cpu: "100m"
+              memory: "500Mi"
+              cpu: "200m"
           env:
             - name: DATABASE_URL
               valueFrom:
