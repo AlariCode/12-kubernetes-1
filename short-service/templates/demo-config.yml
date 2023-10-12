@@ -4,5 +4,6 @@ metadata:
   name: demo-config
 data:
   key: {{ .Release.Name }}
-  name: {{ .Values.name }}
-  chart: {{ .Chart.AppVersion }}
+  name: {{ .Values.name | upper | quote }}
+  chart: {{ .Chart.AppVersion | quote }}
+  date: {{ now | date "2006-01-02" | quote }}
