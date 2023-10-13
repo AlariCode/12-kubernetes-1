@@ -1,7 +1,14 @@
+{{- define "chart.labels"  }}
+  labels:
+    date: {{ now | htmlDate }}
+    version: {{ .Values.app.version }}
+{{- end}}
+
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: demo-config
+  {{- template "chart.labels" . }}
 data:
   name: {{ .Values.app.version | upper | quote }}
   {{- if eq .Values.env "production"}}
