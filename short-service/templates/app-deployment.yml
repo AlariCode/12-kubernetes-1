@@ -18,6 +18,6 @@ spec:
           ports:
             - containerPort: {{ .Values.app.port }}
           resources:
-            limits:
-              memory: {{ .Values.app.limits.memory }}
-              cpu: {{ .Values.app.limits.cpu }}
+            limits: {{ .Values.app.limits | toYaml | nindent 14 }}
+# toYaml
+# nintent
