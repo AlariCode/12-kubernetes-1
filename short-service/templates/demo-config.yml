@@ -4,3 +4,8 @@ metadata:
   name: demo-config
 data:
   name: {{ .Values.app.version | upper | quote }}
+  {{- if eq .Values.env "production"}}
+  paymentToken: "1234"
+  {{- else }}
+  paymentToken: false
+  {{- end }}
