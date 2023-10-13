@@ -9,3 +9,8 @@ data:
   {{- else }}
   paymentToken: false
   {{- end }}
+  {{- with .Values.value.requirements.limits }}
+  memory: {{ .memory }}
+  cpu: {{ .cpu }}
+  version: {{ $.Release.Name }}
+  {{- end }}

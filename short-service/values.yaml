@@ -10,3 +10,8 @@ app:
     cpu: "100m"
 
 env: test
+value:
+  requirements:
+    limits:
+      memory: "128Mi"
+      cpu: "100m"
