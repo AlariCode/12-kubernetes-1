@@ -1,1 +1,10 @@
-name: Anton
+app:
+  name: short-app
+  image: antonlarichev/short-app
+  version: v1.4
+  components: frontend
+  port: 80
+  replicas: 1
+  limits:
+    memory: "128Mi"
+    cpu: "100m"
