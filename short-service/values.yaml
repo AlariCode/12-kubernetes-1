@@ -15,3 +15,10 @@ value:
     limits:
       memory: "128Mi"
       cpu: "100m"
+
+users:
+  - name: Anton
+    role: admin
+  - name: Vasia
+    role: manager
+# Anton: admin
