@@ -14,8 +14,9 @@ data:
   cpu: {{ .cpu }}
   version: {{ $.Release.Name }}
   {{- end }}
+  {{- $map := .Release.Name | upper | quote }}
+  map: {{ $map }}
   users:
-    {{- range .Values.users }}
-    {{ .name }}: {{ .role }}
+    {{- range $index, $user := .Values.users }}
+    {{ $user.name }}: "{{ $user.role }} - {{ $index }}"
     {{- end }}
-	
