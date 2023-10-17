@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.postgres.name }}-clusterip
+spec:
+  type: ClusterIP
+  ports:
+    - port: {{ .Values.postgres.port }}
+      protocol: TCP
+  selector:
+    components: {{ .Values.postgres.components }}
