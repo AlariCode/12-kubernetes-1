@@ -20,11 +20,10 @@ spec:
           resources:
             limits: {{ .Values.api.limits | toYaml | nindent 14 }}
           env:
-            - name: {{ .Values.api.env }}
-              valueFrom:
-                secretKeyRef:
-                  name: "{{ .Values.api.name }}-secret"
-                  key: {{ .Values.api.env }}
+            {{- range .Values.api.envs }}
+            {{- $data := dict "name" $.Values.api.name "env" . }}
+            {{- include "env.template" $data | indent 12 }}
+            {{- end }}
           livenessProbe:
             exec:
               command:
