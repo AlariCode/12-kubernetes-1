@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.api.name }}-deployment
+spec:
+  replicas: {{ .Values.api.replicas }}
+  selector:
+    matchLabels:
+      components: {{ .Values.api.components }}
+  template:
+    metadata:
+      labels:
+        components: {{ .Values.api.components }}
+    spec:
+      containers:
+        - name: {{ .Values.api.name }}
+          image: "{{ .Values.api.image }}:{{ .Values.api.version }}"
+          ports:
+            - containerPort: {{ .Values.api.port }}
+          resources:
+            limits: {{ .Values.api.limits | toYaml | nindent 14 }}
+          env:
+            - name: {{ .Values.api.env }}
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Values.api.name }}-secret"
+                  key: {{ .Values.api.env }}
+          livenessProbe:
+            exec:
+              command:
+                - curl
+                - --fail
+                - http://localhost:3000/api
+            initialDelaySeconds: 30
+            periodSeconds: 5
+            failureThreshold: 1
