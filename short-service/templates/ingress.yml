@@ -14,14 +14,14 @@ spec:
             path: "/"
             backend:
               service:
-                name: short-app-clusterip
+                name: {{ .Values.app.name }}-clusterip
                 port:
-                  number: 80
+                  number: {{ .Values.app.port }}
           - pathType: Prefix
             path: "/api"
             backend:
               service:
-                name: short-api-clusterip
+                name: {{ .Values.api.name }}-clusterip
                 port:
-                  number: 3000
+                  number: {{ .Values.api.port }}
 # /api
